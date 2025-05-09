@@ -1,11 +1,14 @@
 package com.backend.store;
 
-public class OrderService implements PaymentService {
+public class OrderService{
 
-    @Override
+    private PaymentService paymentService;
+
+    public OrderService(PaymentService paymentService) {
+        this.paymentService = paymentService;
+    }
+
     public void placeOrder(){
-
-        var paymentService = new StripePaymentService();
-        paymentService.processPayment(100);
+       paymentService.processPayment(10);
     }
 }

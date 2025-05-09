@@ -2,6 +2,7 @@ package com.backend.store;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
 
 @SpringBootApplication
 public class StoreApplication {
@@ -10,7 +11,8 @@ public class StoreApplication {
 
     //     SpringApplication.run(StoreApplication.class, args);
 
-        var orderService = new OrderService( new PaypalPaymentService());
+        ApplicationContext context = SpringApplication.run(StoreApplication.class, args);
+        var orderService = context.getBean(OrderService.class);
         orderService.placeOrder();
     }
 
